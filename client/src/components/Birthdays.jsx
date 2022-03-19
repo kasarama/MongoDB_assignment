@@ -1,30 +1,37 @@
 import facade from "../facade";
 import React, { useEffect, useState } from "react";
-import { Table } from "react-bootstrap";
-
-const init_birthday = {
-  person: { name: "Magdalena" },
-  date: "14-04-1988",
-  gifts: ["Sponge", "Raspberry Pi"],
-};
-
+import { Table, Button } from "react-bootstrap";
 
 export default function Birthdays() {
-  const [birthdays, setBirthdays] = useState(map_birthdays([init_birthday]));
+  const [birthdays, setBirthdays] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [startFetch, SetStartFetch] = useState(false);
 
   function map_birthdays(arr) {
     return arr.map((b) => {
       return (
-        <tr key={"tr_" + b.id}>
+        <tr key={"tr_" + arr.indexOf(b)}>
           <td>{arr.indexOf(b) + 1}</td>
-          <td>{b.date}</td>
-          <td>{b.person.name}</td>
-          <td>{b.gifts.join(", ")}</td>
+          <td>{b.date ? b.date : "date not present"}</td>
+          <td>{b.person.name ? b.person.name : "name not present"}</td>
+          <td>{b.gifts ? b.gifts.join(", ") : "gifts not present"}</td>
         </tr>
       );
     });
   }
-  return (
+  const loader = (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        textAlign: "center",
+      }}
+    >
+      <div className="loader"></div>
+    </div>
+  );
+  const table = (
     <Table striped bordered hover>
       <thead>
         <tr>
@@ -36,5 +43,40 @@ export default function Birthdays() {
       </thead>
       <tbody>{birthdays}</tbody>
     </Table>
+  );
+
+  const button = (
+    <Button variant="dark" onClick={(e) => get_birthdays(e)}>
+      Show top 10 hashtags
+    </Button>
+  );
+  const get_birthdays = (e) => {
+    e.preventDefault();
+    SetStartFetch(true);
+
+    // setBirthdays(map_birthdays([init_birthday]));
+  };
+
+  useEffect(() => {
+    if (startFetch) {
+      setLoading(true);
+      facade
+        .get_birthdays()
+        .then((result) => {
+          setBirthdays(map_birthdays(result));
+          SetStartFetch(false);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  }, [startFetch]);
+
+  return (
+    <div>
+      {birthdays ? table : button}
+      {loading ? loader : ""}
+    </div>
   );
 }

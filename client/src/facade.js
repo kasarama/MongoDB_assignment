@@ -28,33 +28,20 @@ function apiFacade() {
     return fetch(URL + "10tweets", options).then(handleHttpErrors);
   };
 
-  const post_user = (user) => {
-    console.log(user);
-    const options = makeOptions("POST", user);
-    return fetch(URL + "user", options).then(handleHttpErrors);
-  };
-
-  const post_topics = (user) => {
-    const options = makeOptions("POST", user);
-    return fetch(URL + "topics", options).then(handleHttpErrors);
-  };
-
-  const estimate = (user) => {
-    const options = makeOptions("POST", user);
-    return fetch(URL + "estimate", options).then(handleHttpErrors);
-  };
-  const getEstimateStatus = () => {
+  const get_birthdays = () => {
     const options = makeOptions("GET");
-    return fetch(URL + "estimatestate", options).then(handleHttpErrors);
+    return fetch(URL + "10birthdays", options).then(handleHttpErrors);
+  };
+
+  const post_birthday = (birthday) => {
+    const options = makeOptions("POST", birthday);
+    return fetch(URL + "addbirthday", options).then(handleHttpErrors);
   };
 
   return {
     get_tweets,
-    post_user,
-    post_topics,
-    makeOptions,
-    estimate,
-    getEstimateStatus,
+    get_birthdays,
+    post_birthday,
   };
 }
 

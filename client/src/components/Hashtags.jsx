@@ -13,11 +13,10 @@ export default function Hashtags() {
   };
 
   useEffect(() => {
-    console.log("In use effect");
     if (startFetch) {
       setLoading(true);
       facade
-        .get_tweets()
+        .get_birthdays()
         .then((result) => {
           setTweets(map_table(result));
           SetStartFetch(false);
