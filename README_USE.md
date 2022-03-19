@@ -1,4 +1,4 @@
-# How to run programm:
+# How to run the programm:
 
 ## You need to have installed Node.js, NPM and MongoDb.
 
@@ -6,7 +6,7 @@
 
 ##
 
-## open terminal in C:\SKOLE\DATABASES\MongoDB\assignment\mern-stack-boilerplate\server and run
+## Open terminal in C:\SKOLE\DATABASES\MongoDB\assignment\mern-stack-boilerplate\server and run
 
 ### `npm install`
 
@@ -16,7 +16,7 @@
 
 ### Backend is running at localhost:5000
 
-## open terminal in C:\SKOLE\DATABASES\MongoDB\assignment\mern-stack-boilerplate\client and run
+## Open terminal in C:\SKOLE\DATABASES\MongoDB\assignment\mern-stack-boilerplate\client and run
 
 ### `npm install`
 
