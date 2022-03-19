@@ -14,6 +14,7 @@ const ObjectId = require("mongodb").ObjectId;
 // This section will help you get a list of all the records.
 tweetRouts.route("/tweets").get(function (req, res) {
   let db_connect = dbo.getDb("Twitter");
+
   db_connect
     .collection("tweets")
     .find({}, { text: 1 })
@@ -35,9 +36,46 @@ tweetRouts.route("/tweet/:id").get(function (req, res) {
   });
 });
 
+tweetRouts.route("/10tweets").get(function (req, res) {
+  let db_connect = dbo.getDb();
+
+  /*
+db.tweets.find({'entities.hashtags': {$exists: true}}, {_id: 0, 'entities.hashtags.text':1} ).map(r=>r.entities.hashtags).toArray().flatMap(x=>x).reduce((previous, current) => {
+  previous[current.text]
+    ? previous[current.text]++
+    : (previous[current.text] = 1);
+  current = { ...previous };
+  return current;
+}, {})
 
 
-tweetRouts.route("")
+*/
+
+  db_connect
+    .collection("tweets")
+    .find(
+      { "entities.hashtags": { $exists: true } },
+      { _id: 0, "entities.hashtags.text": 1 }
+    )
+    .toArray(
+      //    { _id: 0, "entities.hashtags.text": 1 },
+      function (err, result) {
+        if (err) throw err;
+        const a = result
+          .map((r) => r.entities.hashtags)
+          .flatMap((x) => x)
+          .reduce((previous, current) => {
+            previous[current.text]
+              ? previous[current.text]++
+              : (previous[current.text] = 1);
+            current = { ...previous };
+            return current;
+          }, {});
+
+        res.json(a);
+      }
+    );
+});
 
 /*
 // This section will help you create a new record.
