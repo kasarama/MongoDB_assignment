@@ -21,14 +21,14 @@ tweetRouts.route("/10tweets").get(function (req, res) {
         .flatMap((x) => x)
         .reduce((previous, current) => {
           previous[current.text]
-            ? previous[current.text].fequency++
-            : (previous[current.text] = { fequency: 1, text: current.text });
+            ? previous[current.text].amount++
+            : (previous[current.text] = { amount: 1, text: current.text });
           current = { ...previous };
           return current;
         }, {});
       const map_arr = Object.values(map);
       map_arr.sort((a, b) => {
-        return b.fequency - a.fequency;
+        return b.amount - a.amount;
       });
       res.json(map_arr.slice(0, 10));
     });
