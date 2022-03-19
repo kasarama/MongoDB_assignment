@@ -49,13 +49,14 @@ Depending on the setup, when a shard comes back online, if it is part of a repli
 As we have already dicussed, replication is the answer. This would increase the redundancy of shards substantially and actually make this a viable solution. This means that the data would reside in multiple servers, acting as a backup if a shard goes down. Even though it comes with a big cost in setup and amount of servers. If done right each replica and shard should live on their own server. This can quickly scale up dozens if not hundreds of servers.  
 
 #### Pros & cons with mongoDB
+##### Pros
 - Can handle humongous amount of data
 - High flexibility in data, since  data types are not enforced by any schema
 - Allows nesting of objects. Can also make references/relation to other documents.
 - Can store files, using gridFX
 - Data redundancy with replication feature.
 - Horizontal scaleability with sharding
-
+##### Cons
 - Encourages denormilazation due to there being no rule enforcement from schemas and allowing nesting
 - No type checking or input validation. The data needs to be cleaned and checked by the code.
 - joins are difficult to implement.
