@@ -2,7 +2,7 @@
 
 ## You need to have installed Node.js, NPM and MongoDb.
 
-## Start MongoDb server at default port and add tweets to Twitter databes: https://github.com/ozlerhakan/mongodb-json-files
+## Start MongoDb server at default port and add tweets to Twitter database: https://github.com/ozlerhakan/mongodb-json-files
 
 ##
 
