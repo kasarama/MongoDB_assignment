@@ -4,7 +4,7 @@
 
 - Allan Bo Simonsen, cph-as484
 - Jean-Poul Leth-Møller, cph-jl360
-- Magda Aleksandra Wawrzak, cph-mw216
+- Magdalena Wawrzak, cph-mw216
 - Nina Lisakowski, cph-nl163
 
 ### Code Walkthrough
