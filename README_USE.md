@@ -6,7 +6,7 @@
 
 ##
 
-## Open terminal in C:\SKOLE\DATABASES\MongoDB\assignment\mern-stack-boilerplate\server and run
+## Open terminal in \server and run
 
 ### `npm install`
 
@@ -16,7 +16,7 @@
 
 ### Backend is running at localhost:5000
 
-## Open terminal in C:\SKOLE\DATABASES\MongoDB\assignment\mern-stack-boilerplate\client and run
+## Open terminal in \client and run
 
 ### `npm install`
 
