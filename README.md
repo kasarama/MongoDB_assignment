@@ -31,12 +31,13 @@ The setup for sharding is very tedious and requieres setting up each individual 
 The flow of data is as follow: The mongos server acts an entry point for the client. The mongos server, when requested for read or write operation, will contact the config server. The config server will lookup which shard to contact for the specific data. The mongos server will then contact the correct shard to complete the operation.
 
 ##### d) Provide implementation of map and reduce function
--Answered by code
+map : https://github.com/kasarama/MongoDB_assignment/blob/21299f954a4ed76bdf1888ae5af31b4251fabf1b/server/routes/tweets.js#L20
+reduce : https://github.com/kasarama/MongoDB_assignment/blob/21299f954a4ed76bdf1888ae5af31b4251fabf1b/server/routes/tweets.js#L22
 ##### e) Provide execution command for running MapReduce
--Answered by code
+We do not run MapReduce function of MongoDb but map and reduce the result of this query: 
+    find({ "entities.hashtags": { $exists: true } }, { _id: 0, "entities.hashtags.text": 1 })
 ##### f) Provide top 10 recorded out of the sorted result. (hint: use sort on the result returned by
-MapReduce)
--Answered by code
+https://github.com/kasarama/MongoDB_assignment/blob/21299f954a4ed76bdf1888ae5af31b4251fabf1b/server/routes/tweets.js#L30
 
 ##### g) Show what happens to the data when one shard is turned off.
 When a shard goes down, the data that shard contains becomes unavailable. The effectively means half or more of the data is unreadable. This can be mediagted by replicating the shards. Replications would in that case step in and acts as the new primary.
