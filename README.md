@@ -8,8 +8,7 @@
 - Nina Lisakowski, cph-nl163
 
 ### Code Walkthrough
-How the code works
-How to run the project
+There is readme on how to run the project: https://github.com/kasarama/MongoDB_assignment/tree/main/client
 
 ### Questions
 ##### a) What is sharding in mongoDB?
