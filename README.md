@@ -36,7 +36,7 @@ reduce : https://github.com/kasarama/MongoDB_assignment/blob/21299f954a4ed76bdf1
 ##### e) Provide execution command for running MapReduce
 We do not run MapReduce function of MongoDb but map and reduce the result of this query: 
     find({ "entities.hashtags": { $exists: true } }, { _id: 0, "entities.hashtags.text": 1 })
-##### f) Provide top 10 recorded out of the sorted result. (hint: use sort on the result returned by
+##### f) Provide top 10 recorded out of the sorted result.
 https://github.com/kasarama/MongoDB_assignment/blob/21299f954a4ed76bdf1888ae5af31b4251fabf1b/server/routes/tweets.js#L30
 
 ##### g) Show what happens to the data when one shard is turned off.
